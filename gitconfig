@@ -1,0 +1,66 @@
+[user]
+	name = Piotr Jurkiewicz
+[diff]
+	prompt = false
+
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+
+[merge]
+	defaultToUpstream = true
+
+[mergetool]
+	prompt = false
+	keepBackup = false
+
+[log]
+	decorate = short
+
+[core]
+	askpass=
+	autocrlf = false
+	editor = vim
+[credential]
+[credential]
+	helper = store
+[alias]
+	st = status
+	jebac = reset --hard
+	ci = commit
+	a = add
+	ai = add -i
+	ap = add -p
+	df = !git diff --word-diff
+	d = !git diff
+	tasks = !git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci)%Creset' --author='Piotr Jurkiewicz' --grep='erged'
+	flog =  log --stat --find-renames
+	new = !sh -c 'git log $1@{1}..$1@{0} \"$@\"'
+	rev-count = !git rev-list --all | wc -l
+	unstage = reset HEAD
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
+	publish = "!git push -u origin $(git branch-name)"
+	branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
+	branchlog = !sh -c \"git log `git oldest-ancestor`..\"
+	oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne \"s/^ //p\" | head -1' -
+	lsd=log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	authors = shortlog -s -n --all
+
+	# ts
+	apply-config-ts = !sh -c 'git cherry-pick --no-commit $(git rev-parse local-configs-pj)'
+	revert-config-ts = !sh -c 'git revert --no-commit $(git rev-parse local-configs-pj)'
+	ci-ts = !sh -c 'git revert-config-ts && git commit -m \"$0\" && git apply-config-ts'
+	
+	dfs = !git diff --word-diff --staged
+	ds = !git diff --staged
+	ui = !sh -c 'gitk --all'
+	co = checkout
+	branch-new = !sh -c 'git co -b feature/$1 && git push -u origin feature/$1' - 
+ 	branch-cleanup = !git branch -d `git branch | grep feature`
+	cod = !git co develop && git pull
+	set-crlf-global = !git config --global core.autocrlf true
+	set-lf-global = !git config --global core.autocrlf input
+	set-crlf-project = !git config core.autocrlf true
+	set-lf-project = !git config core.autocrlf input
