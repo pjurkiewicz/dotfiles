@@ -20,7 +20,7 @@
 
 [core]
 	askpass=
-	autocrlf = false
+	autocrlf = true
 	editor = vim
 [credential]
 [credential]

@@ -78,6 +78,9 @@ eval `dircolors ~/.dircolors`
 # User configuration
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
