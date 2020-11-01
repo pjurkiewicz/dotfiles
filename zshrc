@@ -73,13 +73,16 @@ ZSH_THEME="robbyrussell"
 plugins=(git tmux)
 
 source $ZSH/oh-my-zsh.sh
-eval `dircolors ~/.dircolors`
+if test -f ~/.dircolors; then 
+	eval `dircolors ~/.dircolors`
+fi 
 
 # User configuration
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+if test -d /usr/share/doc/fzf/examples; then
+	source /usr/share/doc/fzf/examples/key-bindings.zsh
+	source /usr/share/doc/fzf/examples/completion.zsh
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -104,3 +107,5 @@ source /usr/share/doc/fzf/examples/completion.zsh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
