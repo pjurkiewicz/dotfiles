@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux)
+plugins=(git tmux fd)
 
 source $ZSH/oh-my-zsh.sh
 eval `dircolors ~/.dircolors`
@@ -78,6 +78,10 @@ eval `dircolors ~/.dircolors`
 # User configuration
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# fzf
+alias fd=fdfind
+export FZF_DEFAULT_COMMAND='fdfind --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
