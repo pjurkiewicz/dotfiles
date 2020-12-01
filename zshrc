@@ -86,9 +86,12 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 if command -v fdfind &> /dev/null ; then
 	alias fd=fdfind
+	export FZF_DEFAULT_COMMAND='fdfind --type f'
+else
+	export FZF_DEFAULT_COMMAND='fd --type f'
 fi 
 
-export FZF_DEFAULT_COMMAND='fd --type f'
+
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 #source /usr/share/doc/fzf/examples/key-bindings.zsh
 #source /usr/share/doc/fzf/examples/completion.zsh
